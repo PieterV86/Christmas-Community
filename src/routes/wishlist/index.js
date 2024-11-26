@@ -64,8 +64,9 @@ export default function (db) {
         title: _CC.lang('WISHLIST_TITLE', wishlist.username),
         name: wishlist.username,
         items,
+        compiledNotes,
         sharedInfo: wishlist.doc?.info ?? {},
-        showPledgedBy: _CC.config.showPledgedBy, // Pass the flag to the template
+        showPledgedBy: config.showPledgedBy, // Pass the flag to the template
       })
     } catch (error) {
       req.flash('error', error)
