@@ -199,7 +199,7 @@ block content
                   target='_blank'
                 )= (item.name ? item.name : item.url)
             else
-              if item.pledgedBy && item.addedBy != req.user._id
+              if showPledgedBy && item.pledgedBy && item.addedBy != req.user._id
                 strike
                   span= item.name
               else
