@@ -73,7 +73,7 @@ block content
                       )= (item.name ? item.name : item.url)
               else
                 td.ugc(data-label='Name')
-                  if item.pledgedBy && item.addedBy != req.user._id
+                  if showPledgedBy && item.pledgedBy && item.addedBy != req.user._id
                     strike
                       span= item.name
                   else 
@@ -142,7 +142,7 @@ block content
                           span.icon
                             i.fas.fa-angle-double-down
               else
-                td(data-label=lang('WISHLIST_PLEDGE'))
+                if showPledgedBy
                   if req.params.user !== req.user._id && !item.pledgedBy
                     form.inline(method='POST', action=`${_CC.config.base}wishlist/${req.params.user}/pledge/${item.id}`)
                       .field.inline
