@@ -192,6 +192,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: 'Item is door je beloofd!',
   WISHLIST_PLEDGE: 'Beloof',
   WISHLIST_PLEDGED: (pledgedBy) => `Beloofd door ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Beloofd',
   WISHLIST_PLEDGED_GUEST: 'Beloofd door een gast',
   WISHLIST_PLEDGED_ITEM_FOR_USER: (user) => `Item beloofd voor ${user}.`,
   WISHLIST_PRICE: 'Prijs',

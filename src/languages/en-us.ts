@@ -225,6 +225,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: 'Successfully pledged for item!',
   WISHLIST_PLEDGE: 'Pledge',
   WISHLIST_PLEDGED: (pledgedBy) => `Pledged for by ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Pledged',
   WISHLIST_PLEDGED_GUEST: 'Pledged for by a guest user',
   WISHLIST_PLEDGED_ITEM_FOR_USER: (user) => `Pledged item for ${user}.`,
   WISHLIST_PRICE: 'Price',

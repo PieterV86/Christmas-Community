@@ -187,6 +187,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: 'Úspěšně zarezervováno!',
   WISHLIST_PLEDGE: 'Rezervovat',
   WISHLIST_PLEDGED: (pledgedBy) => `Zarezervováno ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Zarezervováno',
   WISHLIST_PRICE: 'Cena',
   WISHLIST_REFRESH_GUARD: 'Neplatné uživatelské jméno',
   WISHLIST_REFRESH_NO_URL: 'Položka nená žádný odkaz.',

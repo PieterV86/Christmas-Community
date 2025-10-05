@@ -190,6 +190,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: '¡Producto comprometido!',
   WISHLIST_PLEDGE: 'Comprometer',
   WISHLIST_PLEDGED: (pledgedBy) => `Comprometido por ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Comprometido',
   WISHLIST_PLEDGED_GUEST: 'Comprometido por un usuario invitado',
   WISHLIST_PRICE: 'Precio',
   WISHLIST_REFRESH_GUARD: 'Usuario inválido',
