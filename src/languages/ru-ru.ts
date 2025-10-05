@@ -221,6 +221,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: 'Предмет успешно зарезервирован!',
   WISHLIST_PLEDGE: 'Зарезервировать',
   WISHLIST_PLEDGED: (pledgedBy) => `Зарезервирован ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Зарезервирован',
   WISHLIST_PLEDGED_GUEST: 'Зарезервирован незарегистрированным пользователем',
   WISHLIST_PLEDGED_ITEM_FOR_USER: (user) =>
     `Зарезервирован предмет для ${user}.`,

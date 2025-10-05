@@ -167,7 +167,9 @@ block content
                         .control.inline
                           input.inline.button(type='submit' value=lang('WISHLIST_UNPLEDGE'))
                   if item.pledgedBy && item.pledgedBy !== req.user._id
-                    if item.pledgedBy === '_CCUNKNOWN'
+                    if global._CC.config.wishlist.hidePledgedIdentities
+                      span.ugc=lang('WISHLIST_PLEDGED_ANONYMOUS')
+                    else if item.pledgedBy === '_CCUNKNOWN'
                       span.ugc=lang('WISHLIST_PLEDGED_GUEST')
                     else
                       span.ugc=lang('WISHLIST_PLEDGED', item.pledgedBy)

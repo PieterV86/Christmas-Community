@@ -184,6 +184,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: 'Gaven er nu reserveret',
   WISHLIST_PLEDGE: 'Reservér',
   WISHLIST_PLEDGED: (pledgedBy) => `Reserveret af ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Reserveret',
   WISHLIST_PLEDGED_GUEST: 'Reserveret af en gæst',
   WISHLIST_PLEDGED_ITEM_FOR_USER: (user) => `Reserveret gave for ${user}.`,
   WISHLIST_PRICE: 'Pris',
