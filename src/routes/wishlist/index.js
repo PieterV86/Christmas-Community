@@ -19,6 +19,20 @@ const totals = (wishlist) => {
   return { unpledged, pledged }
 }
 
+function pledgeLabelFor(item, viewerId) {
+  if (!item.pledgedBy || item.pledgedBy === viewerId) return null
+
+  if (_CC.config.wishlist.hidePledgedIdentities) {
+    return _CC.lang('WISHLIST_PLEDGED_ANONYMOUS')
+  }
+
+  if (item.pledgedBy === '_CCUNKNOWN') {
+    return _CC.lang('WISHLIST_PLEDGED_GUEST')
+  }
+
+  return _CC.lang('WISHLIST_PLEDGED', item.pledgedBy)
+}
+
 export default function (db) {
   const router = express.Router()
 
@@ -59,7 +73,23 @@ export default function (db) {
       try {
         const wishlist = await wishlistManager.get(req.params.user)
         await wishlist.fetch()
-        const items = await wishlist.itemsVisibleToUser(req.user._id)
+        const rawItems = await wishlist.itemsVisibleToUser(req.user._id)
+        const items = rawItems.map((item) => {
+          const viewerId = req.user._id
+          const pledgeLabel = pledgeLabelFor(item, viewerId)
+          const viewerIsPledger = item.pledgedBy === viewerId
+          const hideIdentities = _CC.config.wishlist.hidePledgedIdentities
+
+          return {
+            ...item,
+            isPledged: Boolean(item.pledgedBy),
+            pledgeLabel,
+            pledgedBy:
+              hideIdentities && item.pledgedBy && !viewerIsPledger
+                ? undefined
+                : item.pledgedBy,
+          }
+        })
 
         const compiledNotes = {}
         if (_CC.config.wishlist.note.markdown) {

@@ -217,6 +217,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: 'Pomyślnie zadeklarowano prezent!',
   WISHLIST_PLEDGE: 'Zadeklaruj',
   WISHLIST_PLEDGED: (pledgedBy) => `Zadeklarowany przez ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Zadeklarowany',
   WISHLIST_PLEDGED_GUEST: 'Zadeklarowany przez gościa',
   WISHLIST_PLEDGED_ITEM_FOR_USER: (user) =>
     `Zadeklarowano prezent dla ${user}.`,

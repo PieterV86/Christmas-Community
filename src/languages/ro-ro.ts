@@ -192,6 +192,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: 'Ați rezervat cadoul!',
   WISHLIST_PLEDGE: 'Rezervați cad',
   WISHLIST_PLEDGED: (pledgedBy) => `Rezervat de către ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Rezervat',
   WISHLIST_PLEDGED_GUEST: 'Rezervat de către un vizitator',
   WISHLIST_PRICE: 'Preț',
   WISHLIST_REFRESH_GUARD: 'Utilizator Invalid',

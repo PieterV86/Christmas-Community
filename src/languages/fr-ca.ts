@@ -192,6 +192,7 @@ export const strings = {
   WISHLIST_PLEDGE_SUCCESS: "L'article a été promis avec succès",
   WISHLIST_PLEDGE: 'Promettre',
   WISHLIST_PLEDGED: (pledgedBy) => `Promis par: ${pledgedBy}`,
+  WISHLIST_PLEDGED_ANONYMOUS: 'Promis',
   WISHLIST_PLEDGED_GUEST: 'Promis par un invité',
   WISHLIST_PRICE: 'Coût',
   WISHLIST_REFRESH_GUARD: 'Utilisateur incorrect',
