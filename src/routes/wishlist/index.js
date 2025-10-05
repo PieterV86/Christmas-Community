@@ -19,10 +19,10 @@ const totals = (wishlist) => {
   return { unpledged, pledged }
 }
 
-function pledgeLabelFor(item, viewerId) {
+function pledgeLabelFor(item, viewerId, hideIdentity) {
   if (!item.pledgedBy || item.pledgedBy === viewerId) return null
 
-  if (_CC.config.wishlist.hidePledgedIdentities) {
+  if (hideIdentity) {
     return _CC.lang('WISHLIST_PLEDGED_ANONYMOUS')
   }
 
@@ -76,9 +76,11 @@ export default function (db) {
         const rawItems = await wishlist.itemsVisibleToUser(req.user._id)
         const items = rawItems.map((item) => {
           const viewerId = req.user._id
-          const pledgeLabel = pledgeLabelFor(item, viewerId)
+          const viewerIsAuthenticated = viewerId && viewerId !== '_CCUNKNOWN'
+          const hideIdentities =
+            _CC.config.wishlist.hidePledgedIdentities || !viewerIsAuthenticated
+          const pledgeLabel = pledgeLabelFor(item, viewerId, hideIdentities)
           const viewerIsPledger = item.pledgedBy === viewerId
-          const hideIdentities = _CC.config.wishlist.hidePledgedIdentities
 
           return {
             ...item,
