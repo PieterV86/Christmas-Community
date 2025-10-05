@@ -19,6 +19,20 @@ const totals = (wishlist) => {
   return { unpledged, pledged }
 }
 
+function pledgeLabelFor(item, viewerId) {
+  if (!item.pledgedBy || item.pledgedBy === viewerId) return null
+
+  if (_CC.config.wishlist.hidePledgedIdentities) {
+    return _CC.lang('WISHLIST_PLEDGED_ANONYMOUS')
+  }
+
+  if (item.pledgedBy === '_CCUNKNOWN') {
+    return _CC.lang('WISHLIST_PLEDGED_GUEST')
+  }
+
+  return _CC.lang('WISHLIST_PLEDGED', item.pledgedBy)
+}
+
 export default function (db) {
   const router = express.Router()
 
@@ -59,7 +73,11 @@ export default function (db) {
       try {
         const wishlist = await wishlistManager.get(req.params.user)
         await wishlist.fetch()
-        const items = await wishlist.itemsVisibleToUser(req.user._id)
+        const rawItems = await wishlist.itemsVisibleToUser(req.user._id)
+        const items = rawItems.map((item) => ({
+          ...item,
+          pledgeLabel: pledgeLabelFor(item, req.user._id),
+        }))
 
         const compiledNotes = {}
         if (_CC.config.wishlist.note.markdown) {
