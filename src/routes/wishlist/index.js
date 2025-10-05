@@ -74,10 +74,22 @@ export default function (db) {
         const wishlist = await wishlistManager.get(req.params.user)
         await wishlist.fetch()
         const rawItems = await wishlist.itemsVisibleToUser(req.user._id)
-        const items = rawItems.map((item) => ({
-          ...item,
-          pledgeLabel: pledgeLabelFor(item, req.user._id),
-        }))
+        const items = rawItems.map((item) => {
+          const viewerId = req.user._id
+          const pledgeLabel = pledgeLabelFor(item, viewerId)
+          const viewerIsPledger = item.pledgedBy === viewerId
+          const hideIdentities = _CC.config.wishlist.hidePledgedIdentities
+
+          return {
+            ...item,
+            isPledged: Boolean(item.pledgedBy),
+            pledgeLabel,
+            pledgedBy:
+              hideIdentities && item.pledgedBy && !viewerIsPledger
+                ? undefined
+                : item.pledgedBy,
+          }
+        })
 
         const compiledNotes = {}
         if (_CC.config.wishlist.note.markdown) {

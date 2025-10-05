@@ -68,7 +68,7 @@ block content
                   img(src=item.image, style='width: 100%; max-height: 20em; object-fit: contain;')
               if item.url
                 td.ugc(data-label=lang('WISHLIST_NAME'))
-                  if item.pledgedBy && item.addedBy != req.user._id
+                  if item.isPledged && item.addedBy != req.user._id
                     strike
                       a(
                         href=item.url,
@@ -83,10 +83,10 @@ block content
                       )= (item.name ? item.name : item.url)
               else
                 td.ugc(data-label='Name')
-                  if item.pledgedBy && item.addedBy != req.user._id
+                  if item.isPledged && item.addedBy != req.user._id
                     strike
                       span= item.name
-                  else 
+                  else
                     span= item.name
               if _CC.config.wishlist.note.markdown
                 td.ugc(data-label=lang('WISHLIST_NOTE'))
@@ -156,7 +156,7 @@ block content
                             i.fas.fa-angle-double-down
               else
                 td(data-label=lang('WISHLIST_PLEDGE'))
-                  if req.params.user !== req.user._id && !item.pledgedBy
+                  if req.params.user !== req.user._id && !item.isPledged
                     form.inline(method='POST', action=`${_CC.config.base}wishlist/${req.params.user}/pledge/${item.id}`)
                       .field.inline
                         .control.inline
@@ -195,7 +195,7 @@ block content
             if item.price
               span= ' '
             if item.url
-              if item.pledgedBy && item.addedBy != req.user._id
+              if item.isPledged && item.addedBy != req.user._id
                 strike
                   a(
                     href=item.url,
@@ -209,7 +209,7 @@ block content
                   target='_blank'
                 )= (item.name ? item.name : item.url)
             else
-              if item.pledgedBy && item.addedBy != req.user._id
+              if item.isPledged && item.addedBy != req.user._id
                 strike
                   span= item.name
               else
@@ -230,7 +230,7 @@ block content
           span.overflowWrap=lang('WISHLIST_ADDED_BY_USER', item.addedBy)
           hr
           div
-            if req.params.user !== req.user._id && !item.pledgedBy
+            if req.params.user !== req.user._id && !item.isPledged
               form.inline(method='POST', action=`${_CC.config.base}wishlist/${req.params.user}/pledge/${item.id}`)
                 .field.inline
                   .control.inline
